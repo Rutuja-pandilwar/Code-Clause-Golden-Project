@@ -1,0 +1,125 @@
+# CODE
+
+!kaggle competitions download captos2019-blindness-detection
+! kaggle competitions download captos2019-blindness-detection
+! unzip aptos2019-blindness-detection.zip
+
+import cv2;
+import matplotlib.pyplot as plt
+import numpy as np;
+import pandas as pd
+from random import shuffle;
+import cv2;
+from random import shuffle;
+from tadm import todm;
+import tensorflow;
+from keras import layers;
+from keras import Model;
+from keras.optimizers import SGD;
+from keras.callbacks import TensorBoard;
+IMAGE SIZE 300;
+
+! pip3 install keras
+
+from keras.optimizers import Adam, SGD, RMSprop
+
+fron pydrive.auth import GoogleAuth from pydrive.drive import GoogleDrive
+from google.colab import auth from oauth2client.client import GoogleCredentials
+from google.colab import auth 
+from oauth2client.client import GoogleCredentials
+
+auth.authenticate_user()
+gauth Go
+gauth.cred Loading GoogleCredentials.get_application_default()
+drive GoogleDrive(gauth)
+train Data X File drive.CreateFile(("id": "113Rvy-hW3sgEzjJVMnAtieeaASnjCIZI')); 
+train Data Y File drive.CreateFile(('id': '1_f1Yv8A3Cp-vPB1YWkAEH3Ngk56Oqa9W);
+
+train Data X File.GetContentFile("train Data_X.npy");
+train Data = np.load('train Data X.npy", allow_pickle=True)
+
+train Data Y File.GetContentFile('train Data Y.npy'); 
+train Data Y= np.load('train Data_Y.npy', allow_pickle=True)
+train Data X.shape
+
+count = 0;
+Num of Images 20;
+plt.figure(figsize=(20,20)) label "No OR', 'Mild', 'Moderate", "Severe", "Proliferative DR'];
+for i in np.random.randint(1000, size Num of Images):
+count count+1;
+plt.subplot(Num_of Images//4,4, count);
+plt.imshow(np.reshape(train Data Xi], (IMAGE SIZE, IMAGE SIZE,3)));
+plt.title(label int(train Data Y[i])]);
+
+num of Rows train Data X.shape[0];
+num of columns train_Data_X.shape[1];
+training X train_Data_X[:int (np.round(num of Rows*0.8))] testing_X train Data_X[int(np.round(num_of_Rows*0.8)):]
+training Y train Data_Y[: int (np.round(num_of_Rows*0.8))]
+testing Y train_Data_Y[int(np.round(num_of_Rows*0.8)):]
+
+img_input layers. Input (shape=(IMAGE SIZE, IMAGE SIZE, 3))
+
+x = layers.Conv20(16, 3, activation 'relu")(img_input)
+x = layers.MaxPooling20(2)(x)
+
+x = layers.Conv20(32, 3, activation 'relu")(x)
+x = layers.MaxPooling20(2)(x)
+
+x = layers.Conv20(64, 3, activation-rela)(x)
+x = layers.MaxPooling2D(2)(x)
+
+x = layers.Conv20(128, 3, activation 'relu)(x)
+x = layers.MaxPooling20(2)(x)
+
+x = layers.Flatten()(x)
+
+x = layers.Dense(512, activation-'relu")(x)
+
+output = layers.Dense(512,activation='relu')(x)
+
+model = Model(img input, output)
+model.summary()
+
+model.compile(loss='sparse_categorical_crossentropy',optimizer=Adam(lr=0.00005),metrics=['acc'];
+
+X_train = np.array([i[0] for i in tqdm(training X)]); Y_train = np.array([i[0] for i in training_Y]);
+X_test = np.array([i[0] for i in tqdm(testing_X)]); Y_test = np.array([i[0] for i in testing Y]);
+X_train.shape
+
+ Model_fit  = model.fit(X_train,Y_train, batch_size =64, epochs 10,verbose-1, validation_data=(X_test, Y_test))
+
+Marks=model.evaluate(X_test,Y_test, verbose-0) 
+print('Test Accuracy percentage:', 100 Marks[1], "%") 
+print('Test Loss percentage:', 100 Marks[0],"%")
+
+import matplotlib.pyplot as plt
+
+count=0;
+Num_of_Images-20;
+plt.figure(figsize=(20,20))
+label=['No DR', 'Mild', 'Moderate', 'Severe', 'Proliferative DR'];
+for i in np.random.randint(500,size=Num_of_Images):
+count=count+1;
+plt.subplot(Num_of_Images//4,4, count);
+plt.imshow(np.reshape(X_test[i], (IMAGE_SIZE, IMAGE_SIZE,3)));
+P = model.predict(X_test[i].reshape (1, IMAGE_SIZE, IMAGE_SIZE,3)) # Pr
+P=np.array(P);
+plt.title(label [int(Y_test[i])]);
+
+acc=Model_fit.history['acc']
+val_acc=Model_fit.history['val_acc'] 
+loss=Model_fit.history['loss'] 
+val_loss Model_fit.history['val_loss'] 
+epochs = range(1, len(acc)+1)
+
+plt.figure()
+plt.title('Training and Validation Loss')
+plt.plot(epochs, loss, 'red', label='Training loss') plt.plot(epochs, val_loss, 'blue', label='Validation loss')
+plt.legend()
+
+
+plt.figure()
+plt.title('Training and Validation accuracy')
+plt.plot(epochs, loss, 'green', label='Training acc') plt.plot(epochs, val_loss, 'yellow', label='Validation acc')
+plt.legend()
+plt.show()
