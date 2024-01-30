@@ -8,7 +8,9 @@ Blindness Detection
 - This repository presents a solution to the Diabetic Retinopathy Detection task using a Convolutional Neural Network (CNN) algorithm.
 - Objective: Create an automated system to predict the severity of Diabetic Retinopathy in retina images.
 
+
 #Dataset Description
+
 
 The dataset contains high-resolution retina images captured under various imaging conditions using different cameras and models.
 Each image is labeled with a severity score on a scale of 0 to 4, representing different stages of Diabetic Retinopathy.
@@ -19,12 +21,19 @@ Severity Categories:
 "SEVERE" - Severity 3
 "PROLIFERATIVE" - Severity 4
 
+
+
 #Approach to Blindness Detection
+
 
 -Model: Convolutional Neural Network (CNN) 
 CNNs are powerful for image classification tasks, as they automatically learn features from images.
+
+
 -Platform: Google Colab 💻
 Google Colab provides free access to GPU resources, speeding up model development.
+
+
 -Dataset: Kaggle 📊
 The dataset is sourced from Kaggle's Diabetic Retinopathy Detection competition, offering diverse retina images.
 
