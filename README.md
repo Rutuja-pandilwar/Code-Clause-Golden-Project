@@ -43,6 +43,8 @@ The code implements the CNN algorithm for Blindness Detection, covering data loa
 Detailed comments and explanations are provided in the code files, making it easy to understand each step.
 
 #Acknowledgments
+
+
 This project is an educational endeavor to explore computer vision and deep learning techniques.
 The dataset and problem statement are from Kaggle's Diabetic Retinopathy Detection competition.
 
